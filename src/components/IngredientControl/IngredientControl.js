@@ -11,6 +11,7 @@ const IngredientControl = props => {
     return (
 
         <div className={classes.BuildControls}>
+            <p><strong>{props.price}</strong></p>
             {ingredientTypes.map(curr=>
                 {
                    return <IngredientControlRow key={curr} 

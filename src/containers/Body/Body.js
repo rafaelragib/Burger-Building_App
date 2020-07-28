@@ -30,12 +30,12 @@ class Body extends Component
             ...this.state.ingredients
         };
         updatedIngredients[type]=count;
-        const price=this.state.price+INGREDIENT_PRICE[type];
+        const price=this.state.totalPrice+INGREDIENT_PRICE[type];
         this.setState({
             totalPrice:price,
             ingredients:updatedIngredients
         });
-
+        
     }
     removeIngredient = (type) =>
     {
@@ -45,7 +45,7 @@ class Body extends Component
             ...this.state.ingredients
         };
         updatedIngredients[type]=count;
-        const price=this.state.price-INGREDIENT_PRICE[type];
+        const price=this.state.totalPrice-INGREDIENT_PRICE[type];
         this.setState({
             totalPrice:price,
             ingredients:updatedIngredients
@@ -92,7 +92,8 @@ class Body extends Component
             <IngredientControl ingredientAdded={this.addIngredient}
             ingredientRemoved={this.removeIngredient} 
             typeOfIngredient={ingredientName}
-            disableInfo={disableInfo} />
+            disableInfo={disableInfo}
+            price={this.state.totalPrice} />
             
             
 
