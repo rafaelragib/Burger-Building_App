@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './Preview.module.css'
 const Preview = (props) =>
 {
@@ -31,6 +32,9 @@ const Preview = (props) =>
     
     }
     return ingredient;
+}
+Preview.propTypes={
+    type:PropTypes.string.isRequired
 }
 
 export default Preview;
