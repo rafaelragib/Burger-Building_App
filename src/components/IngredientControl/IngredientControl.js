@@ -13,7 +13,12 @@ const IngredientControl = props => {
         <div className={classes.BuildControls}>
             {ingredientTypes.map(curr=>
                 {
-                   return <IngredientControlRow key={curr} types={curr}/>
+                   return <IngredientControlRow key={curr} 
+                   types={curr} 
+                   added={()=> props.ingredientAdded(curr)}
+                   removed={()=>props.ingredientRemoved(curr)}
+                   disableInfo={props.disableInfo[curr]}
+                   />
 
                 })}
         </div>

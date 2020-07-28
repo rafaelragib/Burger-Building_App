@@ -37,8 +37,32 @@ class Body extends Component
         });
 
     }
+    removeIngredient = (type) =>
+    {
+        let count=this.state.ingredients[type];
+        count--;
+        const updatedIngredients ={
+            ...this.state.ingredients
+        };
+        updatedIngredients[type]=count;
+        const price=this.state.price-INGREDIENT_PRICE[type];
+        this.setState({
+            totalPrice:price,
+            ingredients:updatedIngredients
+        });
+
+    }
     render()
     {
+        const disableInfo= {
+            ...this.state.ingredients
+        }
+        for(let i in disableInfo)
+        {
+            disableInfo[i]=disableInfo[i]<=0;
+        }
+        console.log(disableInfo);
+
         const ingredientName=Object.keys(this.state.ingredients);
 
         let ingredient= Object.keys(this.state.ingredients).map(igKey=>{
@@ -65,7 +89,10 @@ class Body extends Component
                 {ingredient}
                 <Preview type='bread-bottom'/>
             </div>
-            <IngredientControl ingredientAdded={this.ingredientAdded} typeOfIngredient={ingredientName} />
+            <IngredientControl ingredientAdded={this.addIngredient}
+            ingredientRemoved={this.removeIngredient} 
+            typeOfIngredient={ingredientName}
+            disableInfo={disableInfo} />
             
             
 
