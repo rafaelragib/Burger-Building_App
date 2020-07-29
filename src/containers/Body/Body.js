@@ -54,6 +54,9 @@ class Body extends Component
     }
     render()
     {
+        
+        let disableOrder=true;
+
         const disableInfo= {
             ...this.state.ingredients
         }
@@ -61,7 +64,7 @@ class Body extends Component
         {
             disableInfo[i]=disableInfo[i]<=0;
         }
-        console.log(disableInfo);
+        //console.log(disableInfo);
 
         const ingredientName=Object.keys(this.state.ingredients);
 
@@ -78,10 +81,15 @@ class Body extends Component
             return acc.concat(curr);
         },[]);
         
-        if(ingredient.length===0)
+        if(ingredient.length===0){
             ingredient= <p className={classes.EmptyMessage}>Please add ingredients!</p>
-         //console.log(ingredientVal);
-        return(
+            disableOrder=false;    
+        }
+        
+            //console.log(ingredientVal);
+        
+        
+         return(
             <Auxilary>
             
             <div className={classes.Burger}>
@@ -94,7 +102,7 @@ class Body extends Component
             typeOfIngredient={ingredientName}
             disableInfo={disableInfo}
             price={this.state.totalPrice} />
-            
+            <button className={classes.OrderButton} disabled={!disableOrder}>ORDER NOW!</button>
             
 
             </Auxilary>
