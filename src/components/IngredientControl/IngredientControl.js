@@ -7,11 +7,12 @@ import classes from './IngredientControl.module.css'
 
 const IngredientControl = props => {
     const ingredientTypes = props.typeOfIngredient;
-    console.log(ingredientTypes);
+    //console.log(ingredientTypes);
+    
     return (
 
         <div className={classes.BuildControls}>
-            <p><strong>{props.price}</strong></p>
+            <p>Total Price: <strong>{props.price}</strong></p>
             {ingredientTypes.map(curr=>
                 {
                    return <IngredientControlRow key={curr} 
