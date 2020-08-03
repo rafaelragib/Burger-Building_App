@@ -109,7 +109,8 @@ class Body extends Component
             <Auxilary>
             <OrderSummary show={this.state.orderButtonClicked} 
             ingredients={this.state.ingredients}
-            checkOutCancel={this.cancelPurchasedOrder}/>
+            checkOutCancel={this.cancelPurchasedOrder}
+            price={this.state.totalPrice}/>
             <div className={classes.Burger}>
                 <Preview type='bread-top'/>
                 {ingredient}

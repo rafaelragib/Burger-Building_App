@@ -25,6 +25,7 @@ const OrderSummary = props => {
             
             <h3>Your Order Summary is :</h3>
                 {ingredientsList}
+        <h3>Total Price is ${props.price}</h3>
         </div>
         </Auxilary> 
     );
