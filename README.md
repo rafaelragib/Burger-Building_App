@@ -1,4 +1,4 @@
-##This is an basic project that was made by React
+## This is an basic project that was made by React
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
