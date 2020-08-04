@@ -12,7 +12,7 @@ const IngredientControl = props => {
     return (
 
         <div className={classes.BuildControls}>
-            <p>Total Price: <strong>{props.price}</strong></p>
+            <p>Total Price: <strong>{props.price}$</strong></p>
             {ingredientTypes.map(curr=>
                 {
                    return <IngredientControlRow key={curr} 

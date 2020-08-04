@@ -7,18 +7,18 @@ import IngredientControl from '../../components/IngredientControl/IngredientCont
 import OrderSummary from '../../components/OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICE ={
-    salad:10,
-    meat:20,
-    cheese:10
+    Salad:10,
+    Meat:20,
+    Cheese:10
 }
 
 class Body extends Component
 {
     state ={
         ingredients: {
-            salad:0,
-            meat:0,
-            cheese:0
+            Salad:0,
+            Meat:0,
+            Cheese:0
         },
         totalPrice: 10
     }
