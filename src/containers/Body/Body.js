@@ -4,20 +4,21 @@ import Auxilary from '../../hoc/Auxilary';
 import Preview from '../../components/Preview/Preview'
 import classes from './Body.module.css'
 import IngredientControl from '../../components/IngredientControl/IngredientControl';
+import OrderSummary from '../../components/OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICE ={
-    salad:10,
-    meat:20,
-    cheese:10
+    Salad:10,
+    Meat:20,
+    Cheese:10
 }
 
 class Body extends Component
 {
     state ={
         ingredients: {
-            salad:0,
-            meat:0,
-            cheese:0
+            Salad:0,
+            Meat:0,
+            Cheese:0
         },
         totalPrice: 10
     }
@@ -33,7 +34,8 @@ class Body extends Component
         const price=this.state.totalPrice+INGREDIENT_PRICE[type];
         this.setState({
             totalPrice:price,
-            ingredients:updatedIngredients
+            ingredients:updatedIngredients,
+            orderButtonClicked:false
         });
         
     }
@@ -52,8 +54,25 @@ class Body extends Component
         });
 
     }
+
+    purchasedOrder =()=>
+    {
+        this.setState({
+            orderButtonClicked:true
+        });
+    }
+
+    cancelPurchasedOrder =()=>
+    {
+        this.setState({
+            orderButtonClicked:false
+        });
+    }
+
+
     render()
     {
+        let disableOrder=true;
         const disableInfo= {
             ...this.state.ingredients
         }
@@ -61,7 +80,7 @@ class Body extends Component
         {
             disableInfo[i]=disableInfo[i]<=0;
         }
-        console.log(disableInfo);
+        //console.log(disableInfo);
 
         const ingredientName=Object.keys(this.state.ingredients);
 
@@ -78,12 +97,20 @@ class Body extends Component
             return acc.concat(curr);
         },[]);
         
-        if(ingredient.length===0)
+        if(ingredient.length===0){
             ingredient= <p className={classes.EmptyMessage}>Please add ingredients!</p>
-         //console.log(ingredientVal);
-        return(
+            disableOrder=false;    
+        }
+        
+            //console.log(ingredientVal);
+        
+        
+         return(
             <Auxilary>
-            
+            <OrderSummary show={this.state.orderButtonClicked} 
+            ingredients={this.state.ingredients}
+            checkOutCancel={this.cancelPurchasedOrder}
+            price={this.state.totalPrice}/>
             <div className={classes.Burger}>
                 <Preview type='bread-top'/>
                 {ingredient}
@@ -94,7 +121,7 @@ class Body extends Component
             typeOfIngredient={ingredientName}
             disableInfo={disableInfo}
             price={this.state.totalPrice} />
-            
+            <button className={classes.OrderButton} disabled={!disableOrder} onClick={this.purchasedOrder} >ORDER NOW!</button>
             
 
             </Auxilary>
