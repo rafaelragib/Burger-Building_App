@@ -20,7 +20,8 @@ class Body extends Component
             Meat:0,
             Cheese:0
         },
-        totalPrice: 10
+        totalPrice: 10,
+        orderButtonClicked:false
     }
 
     addIngredient = (type) =>
@@ -50,7 +51,8 @@ class Body extends Component
         const price=this.state.totalPrice-INGREDIENT_PRICE[type];
         this.setState({
             totalPrice:price,
-            ingredients:updatedIngredients
+            ingredients:updatedIngredients,
+            orderButtonClicked:false
         });
 
     }
